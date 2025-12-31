@@ -1,0 +1,38 @@
+{
+    "extends": "./tsconfig.json",
+    "include": [
+        ".react-router/types/**/*",
+    ],
+    "references": [
+        {
+            "path": "./core/tsconfig.json"
+        },
+        {
+            "path": "./apps/web/tsconfig.react.json"
+        },
+        {
+            "path": "./apps/admin/tsconfig.react.json"
+        },
+        {
+            "path": "./apps/smtp/tsconfig.react.json"
+        }
+    ],
+    "compilerOptions": {
+        "composite": true,
+        "strict": true,
+        "noEmit": false,
+        "jsx": "react-jsx",
+        "target": "ES2022",
+        "module": "ES2022",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "bundler",
+        "lib": [
+            "DOM",
+            "DOM.Iterable",
+            "ES2022"
+        ],
+        "paths": {
+        }
+    }
+}
