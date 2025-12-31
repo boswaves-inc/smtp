@@ -10,7 +10,7 @@
     "db:sync": "dotenv -- tsx scripts/sync.ts",
     "build": "react-router build",
     "start": "node server.js",
-    "dev": "dotenv -- node server.js"
+    "dev": "dotenv -- tsx watch server.ts"
   },
   "dependencies": {
     "@react-router/express": "^7.11.0",
