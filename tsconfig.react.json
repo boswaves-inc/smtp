@@ -2,20 +2,11 @@
     "extends": "./tsconfig.json",
     "include": [
         ".react-router/types/**/*",
-    ],
-    "references": [
-        {
-            "path": "./core/tsconfig.json"
-        },
-        {
-            "path": "./apps/web/tsconfig.react.json"
-        },
-        {
-            "path": "./apps/admin/tsconfig.react.json"
-        },
-        {
-            "path": "./apps/smtp/tsconfig.react.json"
-        }
+        "app/**/*",
+        "app/**/.server/**/*",
+        "app/**/.client/**/*",
+        "server/**/*",
+        "schema/**/*"
     ],
     "compilerOptions": {
         "composite": true,
@@ -32,7 +23,23 @@
             "DOM.Iterable",
             "ES2022"
         ],
+        "types": [
+            "vite/client"
+        ],
+        "rootDirs": [
+            ".",
+            "./.react-router/types"
+        ],
         "paths": {
-        }
+            "~/*": [
+                "./app/*"
+            ],
+            "~/server/*": [
+                "./server/*"
+            ],
+            "~/schema/*": [
+                "./schema/*"
+            ],
+        },
     }
 }

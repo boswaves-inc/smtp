@@ -1,16 +1,9 @@
 {
     "extends": "./tsconfig.json",
     // "files": ["./drizzle.config.ts"],
-    "references": [
-        {
-            "path": "./apps/web/tsconfig.node.json"
-        },
-        {
-            "path": "./apps/admin/tsconfig.node.json"
-        },
-        {
-            "path": "./apps/smtp/tsconfig.node.json"
-        }
+    "include": [
+        "server.js",
+        "vite.config.ts"
     ],
     "compilerOptions": {
         "composite": true,
