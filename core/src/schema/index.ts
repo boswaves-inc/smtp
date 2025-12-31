@@ -1,5 +1,6 @@
 import { InferEnum } from "drizzle-orm";
 import { index, pgEnum, pgTable, uniqueIndex } from "drizzle-orm/pg-core";
+import { citext } from "./types";
 
 export const DomainStatus = pgEnum('domain_status', [
     'pending',
@@ -76,8 +77,8 @@ export const EmailLog = pgTable('email_logs', t => ({
     message_id: t.text(),
     from_email: t.varchar({ length: 255 }).notNull(),
     to_emails: t.jsonb().notNull(), // Array of email addresses
-    cc_emails: t.jsonb().default([]),
-    bcc_emails: t.jsonb().default([]),
+    cc_emails: citext().array().default([]),
+    bcc_emails: citext().array().default([]),
     subject: t.varchar({ length: 500 }),
     html_content: t.text(),
     text_content: t.text(),

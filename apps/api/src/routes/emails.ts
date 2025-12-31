@@ -54,7 +54,6 @@ export default ({ auth, postgres }: Context) => {
         const offset = (page - 1) * limit;
 
         try {
-
             const { total, logs } = await postgres.transaction(async tx => {
                 const total = await tx.$count(EmailLog, and(
                     inArray(EmailLog.domain_id, [domain_id]),
@@ -79,6 +78,10 @@ export default ({ auth, postgres }: Context) => {
                 ).limit(limit).offset(offset)
 
                 return { total, logs }
+            })
+
+            const parsed = logs.map(({ ...row }) => {
+
             })
 
             return res.json({

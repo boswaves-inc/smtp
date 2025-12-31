@@ -5,29 +5,15 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1767168066957,
-      "tag": "0000_modern_scourge",
+      "when": 1767195399282,
+      "tag": "0000_init",
       "breakpoints": true
     },
     {
       "idx": 1,
       "version": "7",
-      "when": 1767168533249,
-      "tag": "0001_wonderful_blazing_skull",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1767169121429,
-      "tag": "0002_sleepy_tyger_tiger",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1767192872660,
-      "tag": "0003_soft_whirlwind",
+      "when": 1767195422858,
+      "tag": "0001_tense_the_call",
       "breakpoints": true
     }
   ]
