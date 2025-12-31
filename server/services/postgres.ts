@@ -11,7 +11,7 @@ import type { PgViewBase } from "drizzle-orm/pg-core/view-base";
 import type { RowList, Row } from "postgres";
 
 import postgres from 'postgres';
-import schema from '../schema';
+import schema from '../../schema';
 
 const storage = new AsyncLocalStorage<PostgresJsDatabase<typeof schema>>();
 

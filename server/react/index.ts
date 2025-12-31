@@ -1,9 +1,10 @@
 import { createRequestHandler } from "@react-router/express";
-import postgres, { Postgres } from "./postgres";
+import postgres, { Postgres } from "../services/postgres";
 import express from "express";
+import api from "../api";
 
 import "react-router";
-import { Auth } from "./auth";
+import { Auth } from "../services/auth";
 
 const pg_client = new Postgres()
 
@@ -11,9 +12,9 @@ const auth_client = new Auth({
   postgres: pg_client
 })
 
-const router = express();
+const app_router = express();
 
-router.use(postgres({
+app_router.use(postgres({
   port: process.env.PG_PORT ? Number(process.env.PG_PORT) : 5432,
   host: process.env.PG_HOST ?? 'localhost',
   username: process.env.PG_USERNAME,
@@ -21,7 +22,7 @@ router.use(postgres({
   password: process.env.PG_PASSWORD
 }));
 
-router.use(createRequestHandler({
+app_router.use(createRequestHandler({
   build: () => {
     return import("virtual:react-router/server-build")
   },
@@ -33,4 +34,4 @@ router.use(createRequestHandler({
   }
 }));
 
-export default router
+export default app_router

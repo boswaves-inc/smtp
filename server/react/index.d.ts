@@ -1,6 +1,6 @@
 import "react-router";
-import type { Postgres } from "./postgres";
-import { Auth } from "./auth";
+import type { Postgres } from "../services/postgres";
+import { Auth } from "../services/auth";
 
 declare module "react-router" {
   interface AppLoadContext {

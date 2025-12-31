@@ -1,5 +1,5 @@
 {
-  "name": "@bw/web",
+  "name": "@boswaves/smtp",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,9 +8,9 @@
     "db:update": "dotenv -- drizzle-kit up",
     "db:seed": "dotenv -- tsx scripts/seed.ts",
     "db:sync": "dotenv -- tsx scripts/sync.ts",
-    "build": "react-router build",
-    "start": "node server.js",
-    "dev": "dotenv -- tsx watch server.ts"
+    "build": "tsc && react-router build",
+    "start": "node dist/server.js",
+    "dev": "dotenv -- tsx watch server/index.ts"
   },
   "dependencies": {
     "@react-router/express": "^7.11.0",

@@ -1,5 +1,5 @@
-import { Auth } from "../auth";
-import { Postgres } from "../postgres";
+import { Auth } from "../services/auth";
+import { Postgres } from "../services/postgres";
 
 export interface Context {
     postgres: Postgres,

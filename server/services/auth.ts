@@ -1,5 +1,5 @@
 import { eq } from "drizzle-orm";
-import { ApiKey } from "../schema";
+import { ApiKey } from "../../schema";
 import { Postgres } from "./postgres";
 import express from 'express'
 import bcrypt from "bcryptjs";

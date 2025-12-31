@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import express from 'express'
 import z from 'zod/v4'
-import { Postgres } from '~/server/postgres';
+import { Postgres } from '~/server/services/postgres';
 import { Context } from '../types';
 
 export default ({ auth }: Context) => {

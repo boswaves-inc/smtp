@@ -8,7 +8,7 @@ export default defineConfig(({ isSsrBuild }) => ({
   build: {
     rollupOptions: isSsrBuild ? {
       external: ['async_hooks'],
-      input: "./server/index.ts"
+      input: "./server/react/index.ts"
     } : undefined,
   },
   optimizeDeps: {
@@ -17,9 +17,9 @@ export default defineConfig(({ isSsrBuild }) => ({
   resolve: {
     alias: {
       'lodash': 'lodash-es',
+      '~/app': path.resolve(__dirname, './app'),
       '~/server': path.resolve(__dirname, './server'),
       '~/schema': path.resolve(__dirname, './schema'),
-      '~': path.resolve(__dirname, './app'),
     }
   },
   plugins: [

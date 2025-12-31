@@ -5,11 +5,12 @@ import express, { Request, Response } from 'express'
 import { count, desc, eq, gt, gte } from 'drizzle-orm'
 
 import cors from 'cors'
-import bcrypt from "bcryptjs";
 import { Context } from './types'
-import { Domain, EmailLog, User } from '~/schema/index'
+import { development } from '../utils'
+import { Domain, EmailLog, User } from '../../schema/index'
 
-const AUTH_STATS_KEY = ""
+const PORT = Number.parseInt(process.env.API_PORT || "3000");
+const AUTH_KEY = process.env.AUTH_KEY || "secret"
 
 export default ({ auth, postgres }: Context) => {
     const router = express()
@@ -72,5 +73,14 @@ export default ({ auth, postgres }: Context) => {
         })
     })
 
-    return router
+    if (development()) {
+
+    }
+    else {
+
+    }
+
+    router.listen(PORT, "0.0.0.0", () => {
+        console.log(`[API] listening on http://localhost:${PORT}`);
+    })
 }
