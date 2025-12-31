@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import express from 'express'
-import { Context } from '../../types';
+import { Context } from '../types';
 
 export default ({ auth }: Context) => {
     const router = express()
