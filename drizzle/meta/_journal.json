@@ -22,6 +22,13 @@
       "when": 1767169121429,
       "tag": "0002_sleepy_tyger_tiger",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1767192872660,
+      "tag": "0003_soft_whirlwind",
+      "breakpoints": true
     }
   ]
 }
