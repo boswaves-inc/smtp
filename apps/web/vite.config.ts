@@ -5,10 +5,15 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import path from 'path';
 
 export default defineConfig(({ isSsrBuild }) => ({
+  server: {
+    allowedHosts: [
+      "seaszn.ngrok.dev",
+    ]
+  },
   build: {
     rollupOptions: isSsrBuild ? {
       external: ['async_hooks'],
-      input: "./server/react/index.ts"
+      input: "./server/index.ts"
     } : undefined,
   },
   optimizeDeps: {
@@ -16,10 +21,9 @@ export default defineConfig(({ isSsrBuild }) => ({
   },
   resolve: {
     alias: {
-      'lodash': 'lodash-es',
-      '~/app': path.resolve(__dirname, './app'),
       '~/server': path.resolve(__dirname, './server'),
-      '~/schema': path.resolve(__dirname, './schema'),
+      '~': path.resolve(__dirname, './app'),
+      'lodash': 'lodash-es',
     }
   },
   plugins: [

@@ -1,4 +1,3 @@
-import express from "express";
 import api from './api'
 import react from './react/vite'
 
@@ -8,14 +7,19 @@ import { Auth } from "./services/auth";
 const pg_client = new Postgres()
 
 const auth_client = new Auth({
-  postgres: pg_client
+    postgres: pg_client
 })
 
+export default async () => {
+    const api_svc = api({
+        postgres: pg_client,
+        auth: auth_client
+    })
 
-api({
-    postgres: pg_client,
-    auth: auth_client
-})
 
+    react()
 
-react()
+    return {
+        api_svc
+    }
+}

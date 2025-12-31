@@ -1,6 +1,6 @@
 import { Links, LinksFunction, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import { twMerge } from "tailwind-merge";
-import { Route } from "./+types/root";
+import { Route } from "../+types/root";
 
 export const links: LinksFunction = () => [
     {

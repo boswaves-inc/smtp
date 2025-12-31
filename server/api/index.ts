@@ -5,7 +5,7 @@ import express, { Request, Response } from 'express'
 import { count, desc, eq, gt, gte } from 'drizzle-orm'
 
 import cors from 'cors'
-import { Context } from './types'
+import { Context } from '../types'
 import { development } from '../utils'
 import { Domain, EmailLog, User } from '../../schema/index'
 
@@ -83,4 +83,6 @@ export default ({ auth, postgres }: Context) => {
     router.listen(PORT, "0.0.0.0", () => {
         console.log(`[API] listening on http://localhost:${PORT}`);
     })
+
+    return router
 }
