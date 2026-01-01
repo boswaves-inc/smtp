@@ -28,8 +28,8 @@ jobs:
                   cache: "pnpm"
 
             - run: pnpm install --frozen-lockfile
-            - run: pnpm --filter sdk build
-            - run: pnpm --filter sdk publish --no-git-checks
+            - run: pnpm --filter @boswaves-inc/smtp-sdk build
+            - run: pnpm --filter @boswaves-inc/smtp-sdk publish --no-git-checks
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
