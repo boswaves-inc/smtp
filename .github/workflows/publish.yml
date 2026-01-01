@@ -4,36 +4,12 @@ name: Publish
 on:
   push:
     branches: [main]
-  workflow_dispatch:
 
 jobs:
-  version:
+  publish-sdk:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    outputs:
-      new_version: ${{ env.new_version }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Increment SDK version
-        uses: saleweaver/version_increment_action@v1
-        with:
-          file_path: "libs/sdk/package.json"
-          version_key: "version"
-
-      # - name: Increment Proc version
-      #   uses: saleweaver/version_increment_action@v1
-      #   with:
-      #     file_path: "libs/proc/package.json"
-      #     version_key: "version"
-
-  publish-sdk:
-    needs: version
-    if: needs.version.outputs.new_version != ''
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
       packages: write
 
     steps:
@@ -51,6 +27,21 @@ jobs:
           registry-url: "https://npm.pkg.github.com"
           scope: "@boswaves-inc"
           cache: "pnpm"
+
+      - name: inc version 
+        run: |
+          VERSION=$(node -p "require('./libs/sdk/package.json').version")
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+          PATCH=$((PATCH + 1))
+          NEW_VERSION="$MAJOR.$MINOR.$PATCH"
+
+          cd libs/sdk && npm pkg set version=$NEW_VERSION && cd ../..
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "chore: bump to $NEW_VERSION"
+          git push
 
       - run: pnpm install --frozen-lockfile
       - run: pnpm --filter ./libs/sdk build
