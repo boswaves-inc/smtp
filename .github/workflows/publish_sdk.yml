@@ -19,7 +19,7 @@ jobs:
       - name: Increment version
         uses: saleweaver/version_increment_action@v1
         with:
-          file_path: "lib/sdk/package.json"
+          file_path: "libs/sdk/package.json"
           version_key: "version"
 
   publish-sdk:
