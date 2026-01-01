@@ -8,27 +8,26 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "outDir": "build",
-    "rootDirs": [
-      "src",
-      "schema",
-      "emails",
-      "emails/_components"
-    ],
+    "rootDir": "./src",
     "paths": {
       "~/*": [
         "./src/*"
       ],
       "~/schema/*": [
-        "./schema/*"
+        "./src/schema/*"
       ],
       "~/emails/*": [
-        "./emails/*"
+        "./src/emails/*"
+      ],
+      "~/components/*": [
+        "./src/components/*"
       ],
     }
   },
   "include": [
-    "schema/**/*",
-    "emails/**/*",
-    "src/**/*"
+    // "components/**/*",
+    // "schema/**/*",
+    // "emails/**/*",
+    "src/**/*",
   ],
 }

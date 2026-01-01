@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "dotenv -- tsx --watch src/index.ts",
-    "dev:email": "email dev --port 3002",
+    "dev:email": "email dev --dir src/emails --port 3002",
     "build": "tsup",
     "start": "node build/index.js"
   },

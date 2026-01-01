@@ -1,6 +1,10 @@
 import z from 'zod/v4'
-import { Email } from '~/emails/_components/email'
-import { template } from '~/emails/utils'
+import { Email } from '~/components/email'
+import { template } from '~/utils'
+
+const schema = {
+    otp: z.string()
+}
 
 const {
     handler,
@@ -8,15 +12,13 @@ const {
 } = template('recover_account', ({ otp = "000-000" }) => (
     <Email>
         <h1 className='text-brand'>
-            Recover Account
+            Verify Account
         </h1>
         <h1 className='text-black'>
             {otp}
         </h1>
     </Email>
-), {
-    otp: z.string()
-})
+), schema)
 
 export { handler }
 export default render
