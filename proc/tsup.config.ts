@@ -4,6 +4,7 @@ const env = process.env.NODE_ENV;
 
 export default defineConfig({
     clean: true,
+    outDir: 'build',
     format: ['cjs', 'esm'], // generate cjs and esm files
     target: 'es2020',
     entry: ['src/index.ts'],

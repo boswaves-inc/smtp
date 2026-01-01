@@ -12,7 +12,7 @@
       "src",
       "schema",
       "emails",
-      "components"
+      "emails/_components"
     ],
     "paths": {
       "~/*": [
@@ -24,14 +24,11 @@
       "~/emails/*": [
         "./emails/*"
       ],
-      "~/components/*": [
-        "./components/*"
-      ],
     }
   },
   "include": [
-    "components/**/*",
+    "schema/**/*",
     "emails/**/*",
     "src/**/*"
-, "schema/index.ts"  ],
+  ],
 }

@@ -1,6 +1,6 @@
 import { Kafka as Primitive, KafkaConfig, logLevel as KafkaLevel, Consumer, } from "kafkajs"
-import { KafkaRoute, KafkaRouteHandler } from "./types";
-import { Logger } from "~/logger";
+import { KafkaRoute, KafkaRouteHandler } from "../types";
+import { Logger } from "~/services/logger";
 
 export class Kafka {
     private _consumer: Consumer;
@@ -31,7 +31,7 @@ export class Kafka {
         })
     }
 
-    public use(match: string | (string | RegExp)[], handler: KafkaRouteHandler, beginning?: boolean | undefined) {
+    public on(match: string | (string | RegExp)[], handler: KafkaRouteHandler, beginning?: boolean | undefined) {
         this._routes.push({
             match: typeof match === 'string' ? [match] : match,
             beginning,

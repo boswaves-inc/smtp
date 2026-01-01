@@ -1,5 +1,5 @@
 import { Kafka, Partitioners, Producer } from "kafkajs";
-import { Config } from "./types";
+import { Config, QueueArgs, ScheduleArgs } from "./types";
 
 export class Smtp {
     private _producer: Producer;
@@ -8,26 +8,22 @@ export class Smtp {
         this._producer = producer
     }
 
-    public async queue() {
+    public async queue(body: QueueArgs) {
         const records = await this._producer.send({
             topic: 'smtp.email-queued',
             messages: [{
-                value: 'test'
+                value: JSON.stringify(body)
             }]
         })
-
-        console.log(records)
     }
 
-    public async schedule() {
+    public async schedule(body: ScheduleArgs) {
         const records = await this._producer.send({
             topic: 'smtp.email-scheduled',
             messages: [{
-                value: 'test'
+                value: JSON.stringify(body)
             }]
         })
-
-        console.log(records)
     }
 
     public static async connect({ clientId = '@boswaves-inc/smtp-sdk', ...config }: Config) {

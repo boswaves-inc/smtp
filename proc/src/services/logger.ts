@@ -1,9 +1,6 @@
-// logger.ts
 import EventEmitter from 'events';
-import { extend } from 'lodash';
 import pino, { Bindings, ChildLoggerOptions, Level, LevelChangeEventListener, LevelMapping, LogFn, Logger as Primitive } from 'pino'
 import pretty from "pino-pretty";
-import { eventNames } from 'process';
 
 const DEVELOPMENT = process.env.NODE_ENV !== 'production'
 
@@ -20,23 +17,6 @@ export class Logger implements Primitive {
 
         this._inner = pino({ level, }, DEVELOPMENT ? stream : undefined)
 
-        return new Proxy(this, {
-            get(target, prop) {
-                if (prop in target) {
-                    const value = target[prop as keyof typeof target]
-                    if (typeof value === 'function') {
-                        return value.bind(target)
-                    }
-                    return value
-                }
-
-                const value = target._inner[prop as keyof Primitive]
-                if (typeof value === 'function') {
-                    return value.bind(target._inner)
-                }
-                return value
-            }
-        }) as this & Primitive
     }
 
     // Log methods
@@ -59,7 +39,7 @@ export class Logger implements Primitive {
     get customLevels() { return this._inner.customLevels }
     get useOnlyCustomLevels() { return this._inner.useOnlyCustomLevels }
     // get onChild() { return this._inner.onChild }
-    
+
     // Methods
     child = <T extends string = never>(bindings: Bindings, options?: ChildLoggerOptions<T>) => this._inner.child(bindings, options)
     onChild = (child: pino.Logger) => this._inner.onChild(child)
