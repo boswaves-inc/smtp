@@ -10,7 +10,7 @@
     },
     "dependencies": {
         "chargebee": "^3.14.0",
-        "drizzle-orm": "^0.44.6",
+        "drizzle-orm": "^0.45.1",
         "lodash": "^4.17.21",
         "postgres": "^3.4.7"
     },
@@ -18,7 +18,7 @@
         "@types/lodash": "^4.17.20",
         "@types/node": "^22.18.10",
         "dotenv-cli": "^10.0.0",
-        "drizzle-kit": "^0.31.5",
+        "drizzle-kit": "^0.31.8",
         "tsx": "^4.20.6",
         "typescript": "^5.9.2"
     }
