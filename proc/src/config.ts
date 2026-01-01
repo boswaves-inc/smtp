@@ -32,6 +32,13 @@ export default {
     } satisfies PgOptions<{}>,
     kafka: {
         clientId: 'boswaves/smtp',
-        brokers: ['host.docker.internal:9092']
+        brokers: ['host.docker.internal:9092'],
+        logCreator: () => ({ log, level }) => {
+            const { message, timestamp, ...rest } = log;
+            const prefix = {
+                
+            }
+            
+        }
     } satisfies KafkaConfig
 }
