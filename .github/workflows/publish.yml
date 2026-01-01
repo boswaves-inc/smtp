@@ -1,4 +1,3 @@
-# .github/workflows/release.yml
 name: Publish
 
 on:
@@ -6,16 +5,14 @@ on:
     branches: [main]
 
 jobs:
-  publish-sdk:
+  publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       packages: write
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
 
       - uses: pnpm/action-setup@v4
         with:
@@ -28,23 +25,30 @@ jobs:
           scope: "@boswaves-inc"
           cache: "pnpm"
 
-      - name: inc version 
+      - name: Sync versions
         run: |
-          VERSION=$(node -p "require('./libs/sdk/package.json').version")
-          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
-          PATCH=$((PATCH + 1))
-          NEW_VERSION="$MAJOR.$MINOR.$PATCH"
-
-          cd libs/sdk && npm pkg set version=$NEW_VERSION && cd ../..
-
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "chore: bump to $NEW_VERSION"
-          git push
+          VERSION=$(node -p "require('./package.json').version")
+          cd libs/sdk && pnpm pkg set version=$VERSION && cd ../..
+          cd libs/proc && pnpm pkg set version=$VERSION
 
       - run: pnpm install --frozen-lockfile
+
       - run: pnpm --filter ./libs/sdk build
       - run: pnpm --filter ./libs/sdk publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # PROC (uncomment when ready)
+      # - run: pnpm --filter ./libs/proc build
+      # - uses: docker/login-action@v3
+      #   with:
+      #     registry: ghcr.io
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}
+      # - uses: docker/build-push-action@v5
+      #   with:
+      #     context: ./libs/proc
+      #     push: true
+      #     tags: |
+      #       ghcr.io/${{ github.repository_owner }}/proc:${{ env.VERSION }}
+      #       ghcr.io/${{ github.repository_owner }}/proc:latest
