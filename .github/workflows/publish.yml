@@ -16,11 +16,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Increment version
+      - name: Increment SDK version
         uses: saleweaver/version_increment_action@v1
         with:
           file_path: "libs/sdk/package.json"
           version_key: "version"
+
+      # - name: Increment Proc version
+      #   uses: saleweaver/version_increment_action@v1
+      #   with:
+      #     file_path: "libs/proc/package.json"
+      #     version_key: "version"
 
   publish-sdk:
     needs: version

@@ -24,3 +24,23 @@ jobs:
 
       # TODO: uncomment when tests are ready
       # - run: pnpm --filter ./libs/sdk test
+  
+  ci-proc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter ./libs/proc build
+
+      # TODO: uncomment when tests are ready
+      # - run: pnpm --filter ./libs/proc test
