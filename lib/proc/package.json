@@ -1,6 +1,6 @@
 {
   "name": "@boswaves/smtp-proc",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "private": true,
   "scripts": {
     "dev": "dotenv -- tsx --watch src/index.ts",
