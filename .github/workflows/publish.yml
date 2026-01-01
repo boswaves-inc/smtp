@@ -1,0 +1,59 @@
+# .github/workflows/release.yml
+name: Publish
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      new_version: ${{ env.new_version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Increment SDK version
+        uses: saleweaver/version_increment_action@v1
+        with:
+          file_path: "libs/sdk/package.json"
+          version_key: "version"
+
+      # - name: Increment Proc version
+      #   uses: saleweaver/version_increment_action@v1
+      #   with:
+      #     file_path: "libs/proc/package.json"
+      #     version_key: "version"
+
+  publish-sdk:
+    needs: version
+    if: needs.version.outputs.new_version != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@boswaves-inc"
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter ./libs/sdk build
+      - run: pnpm --filter ./libs/sdk publish --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
