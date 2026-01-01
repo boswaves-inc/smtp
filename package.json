@@ -1,5 +1,6 @@
 {
     "private": true,
+    "version": "0.0.1",
     "scripts": {
         "db:generate": "dotenv -- drizzle-kit generate",
         "db:migrate": "dotenv -- drizzle-kit migrate",
