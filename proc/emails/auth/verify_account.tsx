@@ -1,5 +1,5 @@
 import { formData } from 'zod-form-data'
-import { Email } from '../../components/email'
+import { Email } from '~/components/email'
 import z from 'zod/v4'
 
 

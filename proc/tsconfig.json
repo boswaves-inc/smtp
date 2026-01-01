@@ -7,15 +7,31 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "outDir": "dist",
-    "rootDir": "src",
+    "outDir": "build",
+    "rootDirs": [
+      "src",
+      "schema",
+      "emails",
+      "components"
+    ],
     "paths": {
       "~/*": [
         "./src/*"
-      ]
+      ],
+      "~/schema/*": [
+        "./schema/*"
+      ],
+      "~/emails/*": [
+        "./emails/*"
+      ],
+      "~/components/*": [
+        "./components/*"
+      ],
     }
   },
   "include": [
+    "components/**/*",
+    "emails/**/*",
     "src/**/*"
-  ],
+, "schema/index.ts"  ],
 }

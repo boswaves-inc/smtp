@@ -33,12 +33,5 @@ export default {
     kafka: {
         clientId: 'boswaves/smtp',
         brokers: ['host.docker.internal:9092'],
-        logCreator: () => ({ log, level }) => {
-            const { message, timestamp, ...rest } = log;
-            const prefix = {
-                
-            }
-            
-        }
-    } satisfies KafkaConfig
+    } satisfies Omit<KafkaConfig, 'logCreator'>
 }

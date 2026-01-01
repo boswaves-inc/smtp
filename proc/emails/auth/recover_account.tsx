@@ -1,6 +1,6 @@
 import { Row, Section, Column } from '@react-email/components'
-import { Email } from '../../components/email'
 import { formData } from 'zod-form-data'
+import { Email } from '~/components/email'
 import z from 'zod/v4'
 
 export const Data = formData({
