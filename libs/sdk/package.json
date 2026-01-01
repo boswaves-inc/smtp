@@ -1,6 +1,5 @@
 {
   "name": "@boswaves-inc/smtp-sdk",
-  "version": "0.1.0",
   "type": "module",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
