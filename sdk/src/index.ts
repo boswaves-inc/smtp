@@ -1,2 +1,2 @@
-export { SmtpClient } from './client'
+export { Smtp } from './client'
 export * from './types'
