@@ -6,7 +6,7 @@
         "db:update": "dotenv -- drizzle-kit up",
         "db:seed": "dotenv -- tsx scripts/seed.ts",
         "db:sync": "dotenv -- tsx scripts/sync.ts",
-        "sdk:pub": "pnpm --filter @boswaves-inc/smtp-sdk exec pnpm publish --no-git-checks"
+        "sdk:pub": "pnpm --filter ./libs/sdk exec pnpm publish --no-git-checks"
     },
     "dependencies": {
         "chargebee": "^3.14.0",

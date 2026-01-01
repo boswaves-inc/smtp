@@ -47,7 +47,7 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter ./lib/sdk build
+      - run: pnpm --filter ./libs/sdk build
       - run: pnpm --filter ./lib/sdk publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
