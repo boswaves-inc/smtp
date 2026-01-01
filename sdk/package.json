@@ -1,6 +1,6 @@
 {
-  "name": "@boswaves/smtp-sdk",
-  "version": "0.1.0",
+  "name": "@boswaves-inc/smtp-sdk",
+  "version": "0.1.4",
   "type": "module",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -14,14 +14,15 @@
     "build"
   ],
   "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "build": "dotenv -- tsc",
+    "pub": "dotenv -- pnpm publish --no-git-checks",
+    "prepublishOnly": "dotenv -- npm run build"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/boswaves-inc/smtp.git"
   },
-"publishConfig": {
+  "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {

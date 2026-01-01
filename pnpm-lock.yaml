@@ -40,7 +40,7 @@ importers:
         specifier: ^5.9.2
         version: 5.9.3
 
-  lib/proc:
+  proc:
     dependencies:
       '@react-email/components':
         specifier: 1.0.3
@@ -80,10 +80,10 @@ importers:
         version: 5.1.1
       zod:
         specifier: ^4.1.12
-        version: 4.3.2
+        version: 4.3.4
       zod-form-data:
         specifier: ^3.0.1
-        version: 3.0.1(zod@4.3.2)
+        version: 3.0.1(zod@4.3.4)
     devDependencies:
       '@react-email/preview-server':
         specifier: ^5.1.1
@@ -140,7 +140,7 @@ importers:
         specifier: ^5.1.4
         version: 5.1.4(typescript@5.9.3)(vite@7.3.0(@types/node@22.19.3)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0))
 
-  lib/sdk:
+  sdk:
     dependencies:
       compression:
         specifier: ^1.8.1
@@ -168,7 +168,7 @@ importers:
         version: 3.2.2(tailwind-merge@3.4.0)(tailwindcss@4.1.18)
       zod:
         specifier: ^4.1.12
-        version: 4.3.2
+        version: 4.3.4
     devDependencies:
       '@types/compression':
         specifier: ^1.8.1
@@ -2323,8 +2323,8 @@ packages:
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
-  jsesc@3.0.2:
-    resolution: {integrity: sha512-xKqzzWXDttJuOcawBt4KnKHHIf5oQ/Cxax+0PWFG+DFDgHNAdi+TXECADI+RYiFUMmx8792xsMbbgXj4CwnP4g==}
+  jsesc@3.1.0:
+    resolution: {integrity: sha512-/sM3dO2FOzXjKQhJuo0Q173wf2KOo8t4I8vHy6lF9poUp7bKT0/NHE8fPX23PwfhnykfqnC2xRxOnVw5XuGIaA==}
     engines: {node: '>=6'}
     hasBin: true
 
@@ -3133,8 +3133,8 @@ packages:
     peerDependencies:
       zod: '>= 3.25.0'
 
-  zod@4.3.2:
-    resolution: {integrity: sha512-b8L8yn4rIVfiXyHAmnr52/ZEpDumlT0bmxiq3Ws1ybrinhflGpt12Hvv54kYnEsGPRs6o/Ka3/ppA2OWY21IVg==}
+  zod@4.3.4:
+    resolution: {integrity: sha512-Zw/uYiiyF6pUT1qmKbZziChgNPRu+ZRneAsMUDU6IwmXdWt5JwcUfy2bvLOCUtz5UniaN/Zx5aFttZYbYc7O/A==}
 
 snapshots:
 
@@ -3570,7 +3570,7 @@ snapshots:
       '@babel/types': 7.28.5
       '@jridgewell/gen-mapping': 0.3.13
       '@jridgewell/trace-mapping': 0.3.31
-      jsesc: 3.0.2
+      jsesc: 3.1.0
 
   '@babel/helper-compilation-targets@7.27.2':
     dependencies:
@@ -5305,7 +5305,7 @@ snapshots:
 
   js-tokens@4.0.0: {}
 
-  jsesc@3.0.2: {}
+  jsesc@3.1.0: {}
 
   json-schema-traverse@1.0.0: {}
 
@@ -6086,9 +6086,9 @@ snapshots:
 
   yoctocolors@2.1.2: {}
 
-  zod-form-data@3.0.1(zod@4.3.2):
+  zod-form-data@3.0.1(zod@4.3.4):
     dependencies:
       '@rvf/set-get': 7.0.1
-      zod: 4.3.2
+      zod: 4.3.4
 
-  zod@4.3.2: {}
+  zod@4.3.4: {}
