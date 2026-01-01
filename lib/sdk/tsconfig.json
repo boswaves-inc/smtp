@@ -1,0 +1,25 @@
+{
+    "include": [
+        "src/**/*"
+    ],
+    "compilerOptions": {
+        "outDir": "build",
+        "rootDir": "./src",
+        "declaration": true,
+        "declarationMap": true,
+        "strict": true,
+        "noEmit": false,
+        "jsx": "react-jsx",
+        "target": "ES2022",
+        "module": "ES2022",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "bundler",
+        "lib": [
+            "DOM",
+            "DOM.Iterable",
+            "ES2022"
+        ],
+        "skipLibCheck": true
+    }
+}

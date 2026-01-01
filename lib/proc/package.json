@@ -1,0 +1,46 @@
+{
+  "name": "@boswaves/smtp-proc",
+  "private": true,
+  "scripts": {
+    "dev": "dotenv -- tsup --watch",
+    "dev:email": "email dev --dir src/emails --port 3002",
+    "build": "tsup",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@react-email/components": "1.0.3",
+    "@react-email/render": "^1.0.1",
+    "compression": "^1.8.1",
+    "express": "^5.1.0",
+    "kafkajs": "^2.2.4",
+    "lodash-es": "^4.17.21",
+    "morgan": "^1.10.1",
+    "nodemailer": "^7.0.12",
+    "postgres": "^3.4.7",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-email": "^5.1.1",
+    "zod": "^4.1.12",
+    "zod-form-data": "^3.0.1"
+  },
+  "devDependencies": {
+    "@react-email/preview-server": "^5.1.1",
+    "@tailwindcss/vite": "^4.1.13",
+    "@types/compression": "^1.8.1",
+    "@types/express": "^5.0.5",
+    "@types/lodash": "^4.17.20",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^22.18.13",
+    "@types/nodemailer": "^7.0.4",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.1.2",
+    "dotenv-cli": "^10.0.0",
+    "tailwindcss": "^4.1.13",
+    "tsup": "^8.5.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.12",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}

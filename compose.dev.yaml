@@ -1,0 +1,99 @@
+name: boswaves/smtp
+
+services:
+  # directus:
+  #   image: directus/directus:latest
+  #   restart: always
+  #   ports:
+  #     - "8055:8055"
+  #   environment:
+  #     KEY: "replace-with-random-string"
+  #     SECRET: "replace-with-random-string"
+
+  #     # Database (PostgreSQL recommended)
+  #     DB_CLIENT: "pg"
+  #     DB_HOST: "postgres"
+  #     DB_PORT: "5432"
+  #     DB_DATABASE: "directus"
+  #     DB_USER: "directus"
+  #     DB_PASSWORD: "directus"
+
+  #     # Admin user
+  #     ADMIN_EMAIL: "admin@example.com"
+  #     ADMIN_PASSWORD: "d1r3ctu5"
+
+  #     # Public URL
+  #     PUBLIC_URL: "https://cdn.yourdomain.com"
+
+  #     # File storage
+  #     STORAGE_LOCATIONS: "local"
+  #     STORAGE_LOCAL_ROOT: "./uploads"
+
+  #     # Image transformations
+  #     ASSETS_TRANSFORM_IMAGE_MAX_DIMENSION: "6000"
+
+  #   volumes:
+  #     - ./uploads:/directus/uploads
+  #     - ./extensions:/directus/extensions
+  #   depends_on:
+  #     - postgres
+
+  redpanda:
+    image: redpandadata/redpanda:v24.1.1
+    container_name: bw-redpanda
+    command:
+    - redpanda start
+    - --smp 1
+    - --overprovisioned
+    - --node-id 0
+    - --kafka-addr PLAINTEXT://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092
+    - --advertise-kafka-addr PLAINTEXT://redpanda:29092,OUTSIDE://localhost:9092
+    - --pandaproxy-addr 0.0.0.0:8082
+    - --advertise-pandaproxy-addr localhost:8082
+    networks:
+    - kafka_net
+    ports:
+    - 8081:8081
+    - 8082:8082
+    - 9092:9092
+    - 29092:29092
+
+  rpadmin:
+    image: redpandadata/console:v2.4.5
+    container_name: bw-rpadmin
+    restart: on-failure
+    environment:
+      KAFKA_BROKERS: redpanda:29092
+    networks:
+    - host_net
+    - kafka_net
+    ports:
+    - 8080:8080
+    depends_on:
+    - redpanda
+  # web:
+  #   image: bw/website:latest
+  #   container_name: bw-web
+  #   build:
+  #     context: ./bw-web
+  #     dockerfile: Dockerfile
+  #   environment:
+  #   - PG_PORT=5432
+  #   - PG_HOST=postgres
+  #   - PG_USERNAME=${PG_USERNAME}
+  #   - PG_PASSWORD=${PG_PASSWORD}
+  #   - PG_DATABASE=${PG_DATABASE}
+  #   networks:
+  #   - host_net
+  #   ports:
+  #   - 3000:3000
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+
+
+networks:
+  host_net:
+    driver: bridge
+  kafka_net:
+    driver: bridge

@@ -14,7 +14,7 @@ if (!process.env.PG_PASSWORD) {
 
 export default defineConfig({
     out: './drizzle',
-    schema: './core/src/schema/*',
+    schema: './lib/proc/src/schema/*',
     dialect: 'postgresql',
     migrations: {
         table: '_migrations',
