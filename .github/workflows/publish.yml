@@ -31,7 +31,6 @@ jobs:
 
       - name: Sync versions
         run: |
-          VERSION=$(node -p "require('./package.json').version")
           cd libs/sdk && pnpm pkg set version=$VERSION && cd ../..
           cd libs/proc && pnpm pkg set version=$VERSION
 
