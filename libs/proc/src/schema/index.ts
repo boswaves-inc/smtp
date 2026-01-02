@@ -18,7 +18,7 @@ export const Email = pgTable('emails', {
     payload: jsonb().$type<Record<string, unknown>>().notNull().default({}),
 
     // Email content
-    subject: text('subject'),
+    subject: text(),
 
     to_emails: citext().array().notNull(),
     cc_emails: citext().array().notNull().default([]),
