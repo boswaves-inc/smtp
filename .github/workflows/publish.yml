@@ -2,7 +2,8 @@ name: Publish
 
 on:
   push:
-    branches: [main]
+    tags:
+      - v*
 
 jobs:
   publish:
@@ -24,6 +25,9 @@ jobs:
           registry-url: "https://npm.pkg.github.com"
           scope: "@boswaves-inc"
           cache: "pnpm"
+
+      - name: Extract version
+        run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_ENV
 
       - name: Sync versions
         run: |
